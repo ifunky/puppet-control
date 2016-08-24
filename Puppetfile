@@ -27,3 +27,5 @@ mod 'windows',
 mod 'role',
   :git => "https://github.com/ifunky/ifunky-role.git"
 
+mod 'profile',
+  :git => "https://github.com/ifunky/ifunky-profile.git"
