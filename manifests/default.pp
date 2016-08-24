@@ -4,4 +4,5 @@ node default {
 
   notify { "Im a $role server!!": }
 
+  include $role
 }
