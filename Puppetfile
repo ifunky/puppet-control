@@ -23,3 +23,7 @@ mod 'dsc',
 # Other
 mod 'windows',
   :git => "https://github.com/ifunky/ifunky-windows.git"
+
+mod 'role',
+  :git => "https://github.com/ifunky/ifunky-role.git"
+
