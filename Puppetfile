@@ -25,7 +25,7 @@ mod 'acl',
 
 mod 'downloadfile',
   :git => "https://github.com/voxpupuli/puppet-download_file",
-  :ref => '2.0.0'
+  :ref => 'v2.0.0'
 
 mod 'windows',
   :git => "https://github.com/ifunky/ifunky-windows.git"
