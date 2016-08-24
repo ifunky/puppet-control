@@ -11,6 +11,14 @@ mod 'stdlib',
   :ref => '4.12.0'
 
 # Windows modules
+mod 'powershell',
+  :git => "https://github.com/puppetlabs/puppetlabs-powershell.git",
+  :ref => '2.0.2'
+
+mod 'reboot',
+  :git => "https://github.com/puppetlabs/puppetlabs-reboot.git",
+  :ref => '1.2.1'
+
 mod 'inifile',
   :git => "https://github.com/puppetlabs/puppetlabs-inifile.git",
   :ref => '1.5.0'
