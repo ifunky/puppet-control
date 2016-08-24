@@ -2,7 +2,11 @@ node default {
 
   $role = $::role
 
-  notify { "Im a $role server!!": }
+  # Always include base classes defined in hiera
+  hiera_include('classes')
 
-  include $role
+  # Optionally include role defined on node (typically used in a non ENC environment)
+  if (!empty($role)){
+    include $role
+  }
 }
