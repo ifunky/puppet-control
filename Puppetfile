@@ -7,8 +7,8 @@ forge "https://forgeapi.puppetlabs.com"
 #mod "puppetlabs/dsc", "1.1.0"
 
 mod 'stdlib',
-  :git => "https://github.com/puppetlabs/puppetlabs-registry",
-  :ref => '1.1.3'
+  :git => "https://github.com/puppetlabs/puppetlabs-stdlib",
+  :ref => 'v2.2.1'
 
 # Windows forge modules
 mod 'registry',
