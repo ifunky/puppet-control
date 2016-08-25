@@ -7,10 +7,30 @@ forge "https://forgeapi.puppetlabs.com"
 #mod "puppetlabs/dsc", "1.1.0"
 
 mod 'stdlib',
-  :git => "https://github.com/puppetlabs/puppetlabs-stdlib.git",
-  :ref => '4.12.0'
+  :git => "https://github.com/puppetlabs/puppetlabs-registry",
+  :ref => '1.1.3'
 
-# Windows modules
+# Windows forge modules
+mod 'registry',
+  :git => "https://github.com/puppetlabs/puppetlabs-chocolatey",
+  :ref => '1.2.6'
+
+mod 'chocolatey',
+  :git => "https://github.com/puppetlabs/puppetlabs-chocolatey",
+  :ref => '1.2.6'
+
+mod 'windowsfeature',
+  :git => "https://github.com/voxpupuli/puppet-windowsfeature",
+  :ref => 'v2.0.0'
+
+mod 'iis',
+  :git => "https://github.com/voxpupuli/puppet-iis",
+  :ref => 'v2.0.2'
+
+mod 'windows_env',
+  :git => "https://github.com/badgerious/puppet-windows-env",
+  :ref => 'v2.2.2'
+
 mod 'powershell',
   :git => "https://github.com/puppetlabs/puppetlabs-powershell.git",
   :ref => '2.0.2'
@@ -34,6 +54,8 @@ mod 'acl',
 mod 'downloadfile',
   :git => "https://github.com/voxpupuli/puppet-download_file",
   :ref => 'v2.0.0'
+
+# System modules
 
 mod 'windows',
   :git => "https://github.com/ifunky/ifunky-windows.git"
