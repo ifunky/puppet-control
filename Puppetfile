@@ -12,8 +12,8 @@ mod 'stdlib',
 
 # Windows forge modules
 mod 'registry',
-  :git => "https://github.com/puppetlabs/puppetlabs-chocolatey",
-  :ref => '1.2.6'
+  :git => "https://github.com/puppetlabs/puppetlabs-registry",
+  :ref => '1.1.3'
 
 mod 'chocolatey',
   :git => "https://github.com/puppetlabs/puppetlabs-chocolatey",
