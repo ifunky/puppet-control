@@ -8,7 +8,7 @@ forge "https://forgeapi.puppetlabs.com"
 
 mod 'stdlib',
   :git => "https://github.com/puppetlabs/puppetlabs-stdlib",
-  :ref => 'v2.2.1'
+  :ref => '4.12.0'
 
 # Windows forge modules
 mod 'registry',
