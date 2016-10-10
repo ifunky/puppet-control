@@ -68,3 +68,5 @@ mod 'profile',
 mod 'windows',
     :git => "https://github.com/ifunky/ifunky-windows.git"
 
+mod 'octopus',
+    :git => "https://github.com/ifunky/ifunky-octopus.git"
