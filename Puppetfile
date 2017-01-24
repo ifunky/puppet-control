@@ -70,3 +70,6 @@ mod 'windows',
 
 mod 'octopus',
     :git => "https://github.com/ifunky/ifunky-octopus.git"
+
+mod 'teamcity',
+    :git => "https://github.com/ifunky/ifunky-teamcity.git"
