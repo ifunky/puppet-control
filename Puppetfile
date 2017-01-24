@@ -51,7 +51,7 @@ mod 'acl',
   :git => "https://github.com/puppetlabs/puppetlabs-acl.git",
   :ref => '1.1.2'
 
-mod 'downloadfile',
+mod 'download_file',
   :git => "https://github.com/voxpupuli/puppet-download_file",
   :ref => 'v2.0.0'
 
@@ -70,3 +70,6 @@ mod 'windows',
 
 mod 'octopus',
     :git => "https://github.com/ifunky/ifunky-octopus.git"
+
+mod 'teamcity',
+    :git => "https://github.com/ifunky/ifunky-teamcity.git"
