@@ -8,7 +8,7 @@ forge "https://forgeapi.puppetlabs.com"
 
 mod 'stdlib',
   :git => "https://github.com/puppetlabs/puppetlabs-stdlib",
-  :ref => '4.12.0'
+  :ref => '4.14.0'
 
 # Windows forge modules
 mod 'registry',
@@ -17,7 +17,7 @@ mod 'registry',
 
 mod 'chocolatey',
   :git => "https://github.com/puppetlabs/puppetlabs-chocolatey",
-  :ref => '1.2.6'
+  :ref => '2.0.1'
 
 mod 'windowsfeature',
   :git => "https://github.com/voxpupuli/puppet-windowsfeature",
@@ -33,7 +33,7 @@ mod 'windows_env',
 
 mod 'powershell',
   :git => "https://github.com/puppetlabs/puppetlabs-powershell.git",
-  :ref => '2.0.2'
+  :ref => '2.1.0'
 
 mod 'reboot',
   :git => "https://github.com/puppetlabs/puppetlabs-reboot.git",
@@ -45,7 +45,7 @@ mod 'inifile',
 
 mod 'dsc',
   :git => "https://github.com/puppetlabs/puppetlabs-dsc.git",
-  :ref => '1.1.0'
+  :ref => '1.2.0'
 
 mod 'acl',
   :git => "https://github.com/puppetlabs/puppetlabs-acl.git",
