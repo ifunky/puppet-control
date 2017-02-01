@@ -73,3 +73,7 @@ mod 'octopus',
 
 mod 'teamcity',
     :git => "https://github.com/ifunky/ifunky-teamcity.git"
+
+mod 'nsclient',
+        :git => "https://github.com/ifunky/ifunky-teamcity.git",
+        :ref => 'proxy_server'
