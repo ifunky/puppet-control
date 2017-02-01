@@ -75,5 +75,5 @@ mod 'teamcity',
     :git => "https://github.com/ifunky/ifunky-teamcity.git"
 
 mod 'nsclient',
-    :git => "https://github.com/ifunky/ifunky-teamcity.git",
+    :git => "https://github.com/ifunky/puppet-nsclient.git",
     :ref => 'proxy_server'
