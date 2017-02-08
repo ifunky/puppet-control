@@ -55,6 +55,10 @@ mod 'download_file',
   :git => "https://github.com/voxpupuli/puppet-download_file",
   :ref => 'v2.0.0'
 
+mod 'filebeat',
+  :git => "https://github.com/pcfens/puppet-filebeat",
+  :ref => 'v0.10.2'
+
 # System modules
 mod 'base',
   :git => "https://github.com/ifunky/ifunky-base.git"
