@@ -59,6 +59,11 @@ mod 'filebeat',
   :git => "https://github.com/pcfens/puppet-filebeat",
   :ref => 'v0.10.2'
 
+mod 'remote_file',
+  :git => "https://github.com/lwf/puppet-remote_file.git",
+  :ref => 'v1.1.3'
+
+
 # System modules
 mod 'base',
   :git => "https://github.com/ifunky/ifunky-base.git"
