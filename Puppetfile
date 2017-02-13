@@ -55,9 +55,14 @@ mod 'download_file',
   :git => "https://github.com/voxpupuli/puppet-download_file",
   :ref => 'v2.0.0'
 
+# Pull request pending for proxy server support
+#mod 'filebeat',
+#  :git => "https://github.com/pcfens/puppet-filebeat",
+#  :ref => 'v0.10.2'
+
 mod 'filebeat',
-  :git => "https://github.com/pcfens/puppet-filebeat",
-  :ref => 'v0.10.2'
+  :git => "https://github.com/ifunky/puppet-filebeat",
+  :ref => 'add-proxy-server-support'
 
 mod 'remote_file',
   :git => "https://github.com/lwf/puppet-remote_file.git",
