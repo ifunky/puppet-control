@@ -64,6 +64,10 @@ mod 'filebeat',
   :git => "https://github.com/ifunky/puppet-filebeat",
   :ref => 'add-proxy-server-support'
 
+mod 'winlogbeat',
+  :git => "https://github.com/ifunky/puppet-winlogbeat",
+  :ref => 'add-proxy-server-support'
+
 mod 'remote_file',
   :git => "https://github.com/lwf/puppet-remote_file.git",
   :ref => 'v1.1.3'
