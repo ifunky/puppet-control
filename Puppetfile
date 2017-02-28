@@ -69,7 +69,7 @@ mod 'winlogbeat',
   :ref => 'add-proxy-server-support'
 
 mod 'metricbeat',
-  :git => "https://github.com/ifunky/ifunky-metricbeat",
+  :git => "https://github.com/ifunky/ifunky-metricbeat"
 
 mod 'remote_file',
   :git => "https://github.com/lwf/puppet-remote_file.git",
