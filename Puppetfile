@@ -80,12 +80,6 @@ mod 'remote_file',
 mod 'base',
   :git => "https://github.com/ifunky/ifunky-base.git"
 
-mod 'role',
-  :git => "https://github.com/ifunky/ifunky-role.git"
-
-mod 'profile',
-  :git => "https://github.com/ifunky/ifunky-profile.git"
-
 mod 'windows',
     :git => "https://github.com/ifunky/ifunky-windows.git"
 
