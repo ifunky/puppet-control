@@ -1,0 +1,86 @@
+---
+classes:
+  - base
+
+base::root_web_path: 'd:\RBIWebProjects'
+base::web_logs_path: 'd:\RBIWebLogs'
+base::app_logs_path: 'd:\\RBILogs'
+
+profile::windows::software::filebeat::application_name: 'eg-elastic-search-loader'
+profile::teamcity::agent::server_url: = 'http://teamcity.pra.rbxd.ds/'
+
+windows::proxy_server: "%{hiera('base::proxy_server')}"
+windows::system::iso_folder: 'c:\iso_source'
+windows::software::base_url: 'https://s3-eu-west-1.amazonaws.com/puppet-stuff'
+windows::software::winsxs_source_zip_url: "%{hiera('windows::software::base_url')}/AppSoftware/Microsoft/ISOSource_2012/isosource_2012_sxs.zip"
+
+# Windows defaultProxy exclusion list
+proxy_bypass_list:
+    - { address: '([a-z0-9]+[.])*rbidev[.]ds', ensure: present }
+    - { address: '([a-z0-9]+[.])*pra[.]rbxd[.]ds', ensure: present }
+    - { address: '([a-z0-9]+[.])*b2b[.]regn[.]net', ensure: present }
+    - { address: '169\.254\.169\.254', ensure: present }
+
+# Common site definitions - without bindings unless they should always exist
+egi_websites:
+  egiweb:
+    site_name: egi.web
+    enable_32_bit: false
+    pipeline_mode: Classic
+    runtime_version: v4.0
+    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    bindings:
+      -
+       port: 80
+       host_header: egi.local.rbidev.ds
+       ip_address: '*'
+       protocol: http
+  egiadmin:
+    site_name: egi.administration
+    enable_32_bit: false
+    pipeline_mode: Classic
+    runtime_version: v4.0
+    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    bindings:
+      -
+       port: 80
+       host_header: administration.egi.local.rbidev.ds
+       ip_address: '*'
+       protocol: http
+  egiauth:
+    site_name: egi.api.auth
+    enable_32_bit: false
+    pipeline_mode: Classic
+    runtime_version: v4.0
+    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    bindings:
+      -
+       port: 80
+       host_header: auth.egi.dev.rbidev.ds
+       ip_address: '*'
+       protocol: http
+  egidata:
+    site_name: egi.api.data
+    enable_32_bit: false
+    pipeline_mode: Classic
+    runtime_version: v4.0
+    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    bindings:
+      -
+       port: 80
+       host_header:  data.egi.local.rbidev.ds
+       ip_address: '*'
+       protocol: http
+  qasactiveserver:
+    site_name: egi.qas.activeserverservice
+    enable_32_bit: false
+    pipeline_mode: Classic
+    runtime_version: v4.0
+    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    bindings:
+      -
+       port: 8055
+       host_header: egi.local.rbidev.ds
+       ip_address: '*'
+       protocol: http
+

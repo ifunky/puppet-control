@@ -1,0 +1,20 @@
+---
+version: 5
+
+defaults:
+  datadir: data
+  data_hash: yaml_data
+
+hierarchy:
+  - name: "Nodes"
+    path: "nodes/%{trusted.certname}.yaml"
+
+  - name: "Environment specific"
+    path: "%{::environment}.yaml"
+
+  - name: "Per-OS defaults"
+    path: "os/%{::osfamily}.yaml"
+
+  - name: "Common defaults"
+    path: "common.yaml"
+

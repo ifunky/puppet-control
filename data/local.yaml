@@ -1,0 +1,4 @@
+---
+base::proxy_server: ''
+base::octopus_server_url: 'http://myoctopusserver.net'
+base::elasticsearch_server: 'http://somewhere.net'
