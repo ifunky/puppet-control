@@ -4,15 +4,10 @@
 #
 # @author Dan
 class profile::windows::web::iiscore(
-  $application_host_config = 'C:\Windows\System32\inetsrv\config\applicationhost.config',
-  $root_web_path = hiera('base::params::root_web_path', 'c:\inetpub\wwwroot'),
-  $web_logs_path = hiera('base::params::web_logs_path', 'c:\inetpub\logs')
+  $root_web_path = hiera('base::root_web_path', 'c:\inetpub\wwwroot'),
+  $web_logs_path = hiera('base::web_logs_path', 'c:\inetpub\logs')
 )
 {
-
-  $p_xml = "[xml](Get-Content '${application_host_config}')"
-  $w3c_log = 'configuration."system.applicationHost".log.centralW3CLogFile.directory'
-  $site_default = 'configuration."system.applicationHost".sites.siteDefaults.logFile.directory'
 
   windowsfeature { 'Web-WebServer':
     ensure => present,
@@ -77,17 +72,46 @@ class profile::windows::web::iiscore(
     require => File[$web_logs_path],
   }
 
-  exec { 'Update Server Default LogPath' :
-    command  => "\$xml = ${p_xml}; \$xml.${w3c_log} = '${web_logs_path}'; \$xml.save('${application_host_config}')",
-    onlyif   => "\$xml = ${p_xml}; if ((\$xml.${w3c_log}) -like '${web_logs_path}') { exit 1 }",
-    require  => [Windowsfeature['Web-WebServer'], File[$web_logs_path]],
-    provider => powershell,
+  exec { 'Update site default log location' :
+    command   => "Set-WebConfigurationProperty -Filter System.Applicationhost/Sites/SiteDefaults/logfile -Name directory -Value '$web_logs_path'",
+    onlyif    => "if ( (Get-WebConfiguration –filter system.applicationhost/sites/sitedefaults/logfile | Select-Object -ExpandProperty directory) -eq '$web_logs_path') { exit 1} else { exit 0}",
+    require   => [Windowsfeature['Web-WebServer'], File[$web_logs_path]],
+    logoutput => true,
+    provider  => powershell,
   }
 
-  exec { 'Update Site Default LogPath' :
-    command  => "\$xml = ${p_xml}; \$xml.${site_default} = '${web_logs_path}'; \$xml.save('${application_host_config}')",
-    onlyif   => "\$xml = ${p_xml}; if ((\$xml.${site_default}) -like '${web_logs_path}') { exit 1 }",
-    require  => [Windowsfeature['Web-WebServer'], File[$web_logs_path]],
-    provider => powershell,
+  exec { 'Update server default log location' :
+    command   => "Set-WebConfigurationProperty -Filter system.applicationhost/log/centralW3CLogFile -Name directory -Value '$web_logs_path'",
+    onlyif    => "if ( (Get-WebConfiguration –filter system.applicationhost/log/centralW3CLogFile | Select-Object -ExpandProperty directory) -eq '$web_logs_path') { exit 1} else { exit 0}",
+    require   => [Windowsfeature['Web-WebServer'], File[$web_logs_path]],
+    logoutput => true,
+    provider  => powershell,
   }
+
+  $w3c_fields = 'Date,Time,ClientIP,UserName,SiteName,ComputerName,ServerIP,Method,UriStem,UriQuery,HttpStatus,Win32Status,BytesSent,BytesRecv,TimeTaken,ServerPort,UserAgent,Referer,ProtocolVersion,Host,HttpSubStatus'
+  exec { 'Update default w3c logging fields' :
+    command   => "Set-WebConfigurationProperty -Filter System.Applicationhost/Sites/SiteDefaults/logfile -Name LogExtFileFlags -Value '$w3c_fields'",
+    onlyif    => "if ( (Get-WebConfiguration –filter System.Applicationhost/Sites/SiteDefaults/logfile | Select-Object -ExpandProperty LogExtFileFlags) -eq '$w3c_fields') { exit 1} else { exit 0}",
+    require   => [Windowsfeature['Web-WebServer']],
+    logoutput => true,
+    provider  => powershell,
+  }
+
+  # Custom log fields
+  exec { 'Add x-forwarded-for custom field' :
+    command   => "Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter 'system.applicationHost/sites/siteDefaults/logFile/customFields' -name '.' -value @{logFieldName='X-Forwarded-For';sourceName='X-Forwarded-For';sourceType='RequestHeader'}",
+    onlyif    => 'if ( (Get-WebConfigurationProperty -Filter "//sites/siteDefaults/logFile/customFields/add[@logFieldName=\'X-Forwarded-For\']" -PSPath "IIS:" -Name logFieldName) -eq $null) { exit 0 } else { exit 1 }',
+    require   => [Windowsfeature['Web-WebServer']],
+    logoutput => true,
+    provider  => powershell,
+  }
+
+  exec { 'Add x-forwarded-proto custom field' :
+    command   => "Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter 'system.applicationHost/sites/siteDefaults/logFile/customFields' -name '.' -value @{logFieldName='X-Forwarded-Proto';sourceName='X-Forwarded-Proto';sourceType='RequestHeader'}",
+    onlyif    => 'if ( (Get-WebConfigurationProperty -Filter "//sites/siteDefaults/logFile/customFields/add[@logFieldName=\'X-Forwarded-Proto\']" -PSPath "IIS:" -Name logFieldName) -eq $null) { exit 0 } else { exit 1 }',
+    require   => [Windowsfeature['Web-WebServer']],
+    logoutput => true,
+    provider  => powershell,
+  }
+
 }
