@@ -28,7 +28,7 @@ egi_websites:
     enable_32_bit: false
     pipeline_mode: Classic
     runtime_version: v4.0
-    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    root_web_folder: "%{hiera('base::root_web_path')}"
     bindings:
       -
        port: 80
@@ -40,7 +40,7 @@ egi_websites:
     enable_32_bit: false
     pipeline_mode: Classic
     runtime_version: v4.0
-    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    root_web_folder: "%{hiera('base::root_web_path')}"
     bindings:
       -
        port: 80
@@ -52,7 +52,7 @@ egi_websites:
     enable_32_bit: false
     pipeline_mode: Classic
     runtime_version: v4.0
-    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    root_web_folder: "%{hiera('base::root_web_path')}"
     bindings:
       -
        port: 80
@@ -64,7 +64,7 @@ egi_websites:
     enable_32_bit: false
     pipeline_mode: Classic
     runtime_version: v4.0
-    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    root_web_folder: "%{hiera('base::root_web_path')}"
     bindings:
       -
        port: 80
@@ -76,7 +76,7 @@ egi_websites:
     enable_32_bit: false
     pipeline_mode: Classic
     runtime_version: v4.0
-    root_web_folder: "%{hiera('base::params::root_web_path')}"
+    root_web_folder: "%{hiera('base::root_web_path')}"
     bindings:
       -
        port: 8055
