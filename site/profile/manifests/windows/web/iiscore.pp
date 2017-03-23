@@ -8,6 +8,7 @@ class profile::windows::web::iiscore(
   $root_logs_path = hiera('base::web_logs_path', 'c:\inetpub\logs')
 )
 {
+  include ::profile::windows::software::filebeat
 
   $iis_log_path = "$root_logs_path\W3SVCWEB"
 
