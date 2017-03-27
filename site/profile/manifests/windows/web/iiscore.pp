@@ -5,9 +5,12 @@
 # @author Dan
 class profile::windows::web::iiscore(
   $root_web_path = hiera('base::root_web_path', 'c:\inetpub\wwwroot'),
-  $web_logs_path = hiera('base::web_logs_path', 'c:\inetpub\logs')
+  $root_logs_path = hiera('base::web_logs_path', 'c:\inetpub\logs')
 )
 {
+  include ::profile::windows::software::filebeat
+
+  $iis_log_path = "$root_logs_path\W3SVCWEB"
 
   windowsfeature { 'Web-WebServer':
     ensure => present,
@@ -60,30 +63,36 @@ class profile::windows::web::iiscore(
 
   }
 
-  file { $web_logs_path:
+  file { $root_logs_path:
     ensure  => directory,
     require => Windowsfeature['Web-WebServer'],
   }
 
-  acl{ $web_logs_path:
+  file { $iis_log_path:
+    ensure  => directory,
+    require => File[$root_logs_path],
+  }
+
+  acl{ $root_logs_path:
     permissions => [
       {identity => 'IIS_IUSRS', rights => ['read','write']}
     ],
-    require => File[$web_logs_path],
+    require => File[$root_logs_path],
   }
 
+
   exec { 'Update site default log location' :
-    command   => "Set-WebConfigurationProperty -Filter System.Applicationhost/Sites/SiteDefaults/logfile -Name directory -Value '$web_logs_path'",
-    onlyif    => "if ( (Get-WebConfiguration –filter system.applicationhost/sites/sitedefaults/logfile | Select-Object -ExpandProperty directory) -eq '$web_logs_path') { exit 1} else { exit 0}",
-    require   => [Windowsfeature['Web-WebServer'], File[$web_logs_path]],
+    command   => "Set-WebConfigurationProperty -Filter System.Applicationhost/Sites/SiteDefaults/logfile -Name directory -Value '$iis_log_path'",
+    onlyif    => "if ( (Get-WebConfiguration –filter system.applicationhost/sites/sitedefaults/logfile | Select-Object -ExpandProperty directory) -eq '$iis_log_path') { exit 1} else { exit 0}",
+    require   => [Windowsfeature['Web-WebServer'], File[$iis_log_path]],
     logoutput => true,
     provider  => powershell,
   }
 
   exec { 'Update server default log location' :
-    command   => "Set-WebConfigurationProperty -Filter system.applicationhost/log/centralW3CLogFile -Name directory -Value '$web_logs_path'",
-    onlyif    => "if ( (Get-WebConfiguration –filter system.applicationhost/log/centralW3CLogFile | Select-Object -ExpandProperty directory) -eq '$web_logs_path') { exit 1} else { exit 0}",
-    require   => [Windowsfeature['Web-WebServer'], File[$web_logs_path]],
+    command   => "Set-WebConfigurationProperty -Filter system.applicationhost/log/centralW3CLogFile -Name directory -Value '$iis_log_path'",
+    onlyif    => "if ( (Get-WebConfiguration –filter system.applicationhost/log/centralW3CLogFile | Select-Object -ExpandProperty directory) -eq '$iis_log_path') { exit 1} else { exit 0}",
+    require   => [Windowsfeature['Web-WebServer'], File[$iis_log_path]],
     logoutput => true,
     provider  => powershell,
   }
