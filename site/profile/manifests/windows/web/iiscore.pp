@@ -97,7 +97,7 @@ class profile::windows::web::iiscore(
     provider  => powershell,
   }
 
-  $w3c_fields = 'Date,Time,ClientIP,UserName,SiteName,ComputerName,ServerIP,Method,UriStem,UriQuery,HttpStatus,Win32Status,BytesSent,BytesRecv,TimeTaken,ServerPort,UserAgent,Referer,ProtocolVersion,Host,HttpSubStatus'
+  $w3c_fields = 'Date,Time,ClientIP,UserName,SiteName,ComputerName,ServerIP,Method,UriStem,UriQuery,HttpStatus,BytesSent,BytesRecv,TimeTaken,ServerPort,UserAgent,Referer,ProtocolVersion,Host,HttpSubStatus'
   exec { 'Update default w3c logging fields' :
     command   => "Set-WebConfigurationProperty -Filter System.Applicationhost/Sites/SiteDefaults/logfile -Name LogExtFileFlags -Value '$w3c_fields'",
     onlyif    => "if ( (Get-WebConfiguration –filter System.Applicationhost/Sites/SiteDefaults/logfile | Select-Object -ExpandProperty LogExtFileFlags) -eq '$w3c_fields') { exit 1} else { exit 0}",
