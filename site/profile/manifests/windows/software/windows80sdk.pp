@@ -16,7 +16,7 @@ class profile::windows::software::windows80sdk (
   }
 
   download_file { 'Download SDK 8.0 Zip' :
-    url                   => 'https://s3-eu-west-1.amazonaws.com/puppet-stuff/AppSoftware/Microsoft/SDK/Windows_8_0_SDK.zip',
+    url                   => 'https://s3-eu-west-1.amazonaws.com/rbi.property.software/Microsoft/SDK/Windows_8_0_SDK.zip',
     destination_directory => $destination_path,
     proxy_address         => $proxy_server,
     require               => File[$destination_path],

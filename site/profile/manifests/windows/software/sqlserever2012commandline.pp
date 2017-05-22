@@ -13,7 +13,7 @@ class profile::windows::software::sqlserever2012commandline (
   }
 
   download_file { 'Download Microsoft SQL Server 2012 Command Line Utilites' :
-    url                   => 'https://s3-eu-west-1.amazonaws.com/puppet-stuff/AppSoftware/Microsoft/SQLServer2012/SqlCmdLnUtils.msi',
+    url                   => 'https://s3-eu-west-1.amazonaws.com/rbi.property.software/Microsoft/SQLServer2012/SqlCmdLnUtils.msi',
     destination_directory => $tempdir,
     proxy_address         => $proxy_server,
     require               => Package['sql2012.nativeclient']
