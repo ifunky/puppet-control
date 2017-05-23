@@ -20,5 +20,6 @@ class profile::windows::software::buildtools2013 (
     source          => "$tempdir\\BuildTools_Full.exe",
     provider        => windows,
     install_options => ['/q', '/norestart'],
+    require         => Download_file['Microsoft Build Tools 2013']
   }
 }
