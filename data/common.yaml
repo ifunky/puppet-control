@@ -7,12 +7,12 @@ base::web_logs_path: 'd:\RBIWebLogs'
 base::app_logs_path: 'd:\\RBILogs'
 
 profile::windows::software::filebeat::application_name: 'eg-elastic-search-loader'
-profile::teamcity::agent::server_url: = 'http://teamcity.pra.rbxd.ds/'
+profile::teamcity::agent::server_url: 'http://teamcity.pra.rbxd.ds/'
 
 windows::proxy_server: "%{hiera('base::proxy_server')}"
 windows::system::iso_folder: 'c:\iso_source'
-windows::software::base_url: 'https://s3-eu-west-1.amazonaws.com/puppet-stuff'
-windows::software::winsxs_source_zip_url: "%{hiera('windows::software::base_url')}/AppSoftware/Microsoft/ISOSource_2012/isosource_2012_sxs.zip"
+windows::software::base_url: 'https://s3-eu-west-1.amazonaws.com/rbi.property.software'
+windows::software::winsxs_source_zip_url: "%{hiera('windows::software::base_url')}/Microsoft/ISOSource_2012/isosource_2012_sxs.zip"
 
 # Windows defaultProxy exclusion list
 proxy_bypass_list:
