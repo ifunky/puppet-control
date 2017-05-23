@@ -1,5 +1,6 @@
 class role::teamcity_agent () {
   include ::profile::teamcity::agent
+  include ::profile::windows::software::dotnet35
   include ::profile::windows::software::dotnet452
   include ::profile::windows::software::chrome
   include ::profile::windows::software::notepadplusplus
