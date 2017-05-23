@@ -7,7 +7,8 @@ class profile::windows::software::buildtools2015 (
 {
 
   package { 'microsoft-build-tools':
-    ensure          => $version,
+    #ensure          => $version,
+    install_options => ["--version",$version,'--ignore-checksums'],
     provider        => 'chocolatey',
   }
 }
