@@ -15,4 +15,5 @@ class role::teamcity_agent () {
   include ::profile::windows::software::buildtools2013
   include ::profile::windows::software::buildtools2015
   include ::profile::windows::software::dotnet451developerpack
+  include ::profile::windows::software::mvc4
 }
