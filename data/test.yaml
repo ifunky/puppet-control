@@ -1,6 +1,0 @@
----
-base::proxy_server: 'http://10.52.60.11:3128'
-base::octopus_server_url: 'http://10.52.63.172'
-base::elasticsearch_server: 'http://elasticsearch.logging.pra.rbxd.ds:80/elastic/'
-
-profile::teamcity::agent::server_url: 'http://teamcity.pra.rbxd.ds/'
