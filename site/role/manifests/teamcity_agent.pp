@@ -1,5 +1,4 @@
 class role::teamcity_agent () {
-  include ::profile::teamcity::agent
   include ::profile::windows::software::dotnet35
   include ::profile::windows::software::dotnet452
   include ::profile::windows::software::chrome
@@ -17,4 +16,5 @@ class role::teamcity_agent () {
   include ::profile::windows::software::dotnet451developerpack
   include ::profile::windows::software::mvc4
   include ::profile::windows::software::awscli
+  include ::profile::teamcity::agent
 }
