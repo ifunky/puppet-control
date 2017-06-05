@@ -36,7 +36,7 @@ class profile::windows::software::filebeat (
       'D:\RBILogs\*.log',
     ],
     doc_type => 'log',
-    fields   => {"applicationName" => $application_name}
+    fields   => { 'applicationName' => $application_name, 'environment' => $::stage }
   }
 
 }
