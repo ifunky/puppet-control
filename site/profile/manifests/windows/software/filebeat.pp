@@ -2,16 +2,11 @@
 #
 # @author Dan
 class profile::windows::software::filebeat (
-  $application_name     = undef,
   $log_path             = hiera('base::app_logs_path'),
   $proxy_server         = hiera('base::proxy_server',''),
   $elasticsearch_server = hiera('base::elasticsearch_server'),
 )
 {
-
-  if empty($application_name) {
-    fail("You must supply an applicaiton name")
-  }
 
   class { 'filebeat':
     major_version => 5,
@@ -33,10 +28,10 @@ class profile::windows::software::filebeat (
 
   filebeat::prospector { 'log':
     paths    => [
-      'D:\RBILogs\*.log',
+      "$log_path\*.log",
     ],
     doc_type => 'log',
-    fields   => { 'applicationName' => $application_name, 'environment' => $::stage }
+    fields   => {  'environment' => $::stage }
   }
 
 }
