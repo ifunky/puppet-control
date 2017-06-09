@@ -4,7 +4,7 @@ classes:
 
 base::root_web_path: 'd:\RBIWebProjects'
 base::web_logs_path: 'd:\RBIWebLogs'
-base::app_logs_path: 'd:\\RBILogs'
+base::app_logs_path: 'd:\RBILogs'
 
 profile::windows::software::filebeat::application_name: 'eg-elastic-search-loader'
 profile::teamcity::agent::server_url: 'http://teamcity.pra.rbxd.ds/'
