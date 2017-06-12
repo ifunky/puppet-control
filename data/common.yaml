@@ -15,7 +15,7 @@ windows::software::base_url: 'https://s3-eu-west-1.amazonaws.com/rbi.property.so
 windows::software::winsxs_source_zip_url: "%{hiera('windows::software::base_url')}/Microsoft/ISOSource_2012/isosource_2012_sxs.zip"
 
 # Windows defaultProxy exclusion list
-proxy_bypass_list:
+proxy::proxy_bypass_list:
     - { address: '([a-z0-9]+[.])*rbidev[.]ds', ensure: present }
     - { address: '([a-z0-9]+[.])*pra[.]rbxd[.]ds', ensure: present }
     - { address: '([a-z0-9]+[.])*b2b[.]regn[.]net', ensure: present }

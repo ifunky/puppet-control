@@ -89,6 +89,9 @@ mod 'octopus',
 mod 'teamcity',
     :git => "https://github.com/ifunky/ifunky-teamcity.git"
 
+mod 'proxy',
+    :git => "https://github.com/ifunky/ifunky-proxy.git"
+
 mod 'nsclient',
     :git => "https://github.com/ifunky/puppet-nsclient.git",
     :ref => 'proxy_server'
