@@ -9,6 +9,9 @@ hierarchy:
   - name: "Nodes"
     path: "nodes/%{trusted.certname}.yaml"
 
+  - name: "Pipeline stage"
+    path: "stage/%{facts.stage}"
+
   - name: "Environment specific"
     path: "%{::environment}.yaml"
 
