@@ -95,3 +95,6 @@ mod 'proxy',
 mod 'nsclient',
     :git => "https://github.com/ifunky/puppet-nsclient.git",
     :ref => 'proxy_server'
+
+mod 'proxy',
+    :git => "https://github.com/ifunky/ifunky-proxy.git"
