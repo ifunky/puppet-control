@@ -4,7 +4,8 @@ forge "https://forgeapi.puppetlabs.com"
 #
 #mod "puppetlabs/stdlib", "4.12.0"
 #mod "puppetlabs/inifile", "1.5.0"
-#mod "puppetlabs/dsc", "1.1.0"
+
+mod "puppetlabs/sqlserver", "2.0.0"
 
 mod 'stdlib',
   :git => "https://github.com/puppetlabs/puppetlabs-stdlib",
@@ -54,6 +55,11 @@ mod 'acl',
 mod 'download_file',
   :git => "https://github.com/voxpupuli/puppet-download_file",
   :ref => 'v2.0.0'
+
+mod 'download_file',
+    :git => "https://github.com/voxpupuli/puppet-download_file",
+    :ref => 'v2.0.0'
+
 
 # Pull request pending for proxy server support
 #mod 'filebeat',
