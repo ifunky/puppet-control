@@ -1,65 +1,23 @@
 forge "https://forgeapi.puppetlabs.com"
 
-#  Too many bug in windows to use this out of the box straight away
+# IMPPORTANT!
+# For Windows make sure you have fixed the Ruby SSL error: http://ifunky.net/2017/10/17/ruby-on-windows-ssl-certificate-verify-failed/
 #
-#mod "puppetlabs/stdlib", "4.12.0"
-#mod "puppetlabs/inifile", "1.5.0"
-
-mod "puppetlabs/sqlserver", "2.0.0"
-
-mod 'stdlib',
-  :git => "https://github.com/puppetlabs/puppetlabs-stdlib",
-  :ref => '4.14.0'
 
 # Windows forge modules
-mod 'registry',
-  :git => "https://github.com/puppetlabs/puppetlabs-registry",
-  :ref => '1.1.3'
-
-mod 'chocolatey',
-  :git => "https://github.com/puppetlabs/puppetlabs-chocolatey",
-  :ref => '2.0.1'
-
-mod 'windowsfeature',
-  :git => "https://github.com/voxpupuli/puppet-windowsfeature",
-  :ref => 'v2.0.0'
-
-mod 'iis',
-  :git => "https://github.com/voxpupuli/puppet-iis",
-  :ref => 'v2.0.2'
-
-mod 'windows_env',
-  :git => "https://github.com/badgerious/puppet-windows-env",
-  :ref => 'v2.2.2'
-
-mod 'powershell',
-  :git => "https://github.com/puppetlabs/puppetlabs-powershell.git",
-  :ref => '2.1.0'
-
-mod 'reboot',
-  :git => "https://github.com/puppetlabs/puppetlabs-reboot.git",
-  :ref => '1.2.1'
-
-mod 'inifile',
-  :git => "https://github.com/puppetlabs/puppetlabs-inifile.git",
-  :ref => '1.5.0'
-
-mod 'dsc',
-  :git => "https://github.com/puppetlabs/puppetlabs-dsc.git",
-  :ref => '1.2.0'
-
-mod 'acl',
-  :git => "https://github.com/puppetlabs/puppetlabs-acl.git",
-  :ref => '1.1.2'
-
-mod 'download_file',
-  :git => "https://github.com/voxpupuli/puppet-download_file",
-  :ref => 'v2.0.0'
-
-mod 'download_file',
-    :git => "https://github.com/voxpupuli/puppet-download_file",
-    :ref => 'v2.0.0'
-
+mod "puppetlabs/stdlib", "4.20.0"
+mod "puppetlabs/registry", "1.1.4"
+mod "puppetlabs/chocolatey", "3.0.0"
+mod "puppetlabs/powershell", "2.1.2"
+mod "puppetlabs/reboot", "1.2.1"
+mod "puppetlabs/inifile", "2.0.0"
+mod "puppetlabs/iis", "4.1.1"
+mod "puppetlabs/dsc", "1.4.0"
+mod "puppetlabs/acl", "2.0.1"
+mod "puppet/windowsfeature", "3.0.0"
+mod "puppet/windows_env", "2.3.0"
+mod "puppet/download_file", "2.1.0"
+mod "lwf/remote_file", "1.1.3"
 
 # Pull request pending for proxy server support
 #mod 'filebeat',
@@ -76,10 +34,6 @@ mod 'winlogbeat',
 
 mod 'metricbeat',
   :git => "https://github.com/ifunky/ifunky-metricbeat"
-
-mod 'remote_file',
-  :git => "https://github.com/lwf/puppet-remote_file.git",
-  :ref => 'v1.1.3'
 
 
 # System modules
